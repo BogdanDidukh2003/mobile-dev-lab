@@ -10,19 +10,11 @@ import {
 } from './../components';
 
 const SignInScreen = ({ navigation }) => {
-  const [errorMessage, setErrorMessage] = useState(null);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   return (
     <View style={Styles.container}>
-
-      {errorMessage &&
-        <Text style={{ color: 'red' }}>
-          {errorMessage}
-        </Text>
-      }
-
       <InputField 
         placeholder='Email'
         onChangeText={email => setEmail(email)}

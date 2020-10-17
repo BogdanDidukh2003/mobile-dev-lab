@@ -8,7 +8,6 @@ import {
 } from './../components';
 
 const SignUpScreen = () => {
-  const [errorMessage, setErrorMessage] = useState(null);
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
@@ -16,12 +15,6 @@ const SignUpScreen = () => {
 
   return (
     <View style={Styles.container}>
-      {errorMessage &&
-        <Text style={{ color: 'red' }}>
-          {errorMessage}
-        </Text>
-      }
-
       <InputField
         placeholder='Email'
         onChangeText={email => setEmail(email)}
