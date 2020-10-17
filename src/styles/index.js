@@ -24,6 +24,14 @@ const Styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
+  elementContainer: {
+    alignSelf: 'stretch',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 8,
+    marginBottom: 8,
+  },
+
   errorText: {
     color: 'red',
   },
@@ -39,7 +47,8 @@ const Styles = StyleSheet.create({
     width: '90%',
     borderColor: 'gray',
     borderWidth: 1,
-    marginBottom: 8,
+    borderRadius: 8,
+    padding: 10,
   },
 
   textInputError: {

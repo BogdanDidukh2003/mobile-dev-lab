@@ -37,39 +37,51 @@ const SignUpScreen = () => {
 
   return (
     <View style={Styles.container}>
-      <InputField
-        placeholder='Email'
-        onChangeText={email => setEmail(email)}
-        value={email}
-        errorMessage={emailError}
-      />
 
-      <InputField
-        placeholder='Name'
-        onChangeText={name => setName(name)}
-        value={name}
-        errorMessage={nameError}
-      />
+      <View style={Styles.elementContainer}>
+        <InputField
+          placeholder='Email'
+          onChangeText={email => setEmail(email)}
+          value={email}
+          errorMessage={emailError}
+        />
+      </View>
 
-      <InputField
-        placeholder='Phone'
-        onChangeText={phone => setPhone(phone)}
-        value={phone}
-        errorMessage={phoneError}
-      />
+      <View style={Styles.elementContainer}>
+        <InputField
+          placeholder='Name'
+          onChangeText={name => setName(name)}
+          value={name}
+          errorMessage={nameError}
+        />
+      </View>
 
-      <InputField
-        secureTextEntry
-        placeholder='Password'
-        onChangeText={password => setPassword(password)}
-        value={password}
-        errorMessage={passwordError}
-      />
+      <View style={Styles.elementContainer}>
+        <InputField
+          placeholder='Phone'
+          onChangeText={phone => setPhone(phone)}
+          value={phone}
+          errorMessage={phoneError}
+        />
+      </View>
 
-      <Button
-        title='SIGN UP'
-        onPress={_onPressSignUp}
-      />
+      <View style={Styles.elementContainer}>
+        <InputField
+          secureTextEntry
+          placeholder='Password'
+          onChangeText={password => setPassword(password)}
+          value={password}
+          errorMessage={passwordError}
+        />
+      </View>
+
+      <View style={Styles.elementContainer}>
+        <Button
+          title='SIGN UP'
+          onPress={_onPressSignUp}
+        />
+      </View>
+
     </View>
   );
 };

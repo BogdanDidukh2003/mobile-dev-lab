@@ -35,30 +35,40 @@ const SignInScreen = ({ navigation }) => {
 
   return (
     <View style={Styles.container}>
-      <InputField
-        placeholder='Email'
-        onChangeText={email => setEmail(email)}
-        value={email}
-        errorMessage={emailError}
-      />
 
-      <InputField
-        secureTextEntry
-        placeholder='Password'
-        onChangeText={password => setPassword(password)}
-        value={password}
-        errorMessage={passwordError}
-      />
+      <View style={Styles.elementContainer}>
+        <InputField
+          placeholder='Email'
+          onChangeText={email => setEmail(email)}
+          value={email}
+          errorMessage={emailError}
+        />
+      </View>
 
-      <Button
-        title='SIGN IN'
-        onPress={_onPressSignIn}
-      />
+      <View style={Styles.elementContainer}>
+        <InputField
+          secureTextEntry
+          placeholder='Password'
+          onChangeText={password => setPassword(password)}
+          value={password}
+          errorMessage={passwordError}
+        />
+      </View>
 
-      <Hyperlink
-        text="Don't have an account? Sign Up"
-        onPress={_onPressGoToSignUp}
-      />
+      <View style={Styles.elementContainer}>
+        <Button
+          title='SIGN IN'
+          onPress={_onPressSignIn}
+        />
+      </View>
+
+      <View style={Styles.elementContainer}>
+        <Hyperlink
+          text="Don't have an account? Sign Up"
+          onPress={_onPressGoToSignUp}
+        />
+      </View>
+
     </View>
   );
 }

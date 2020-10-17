@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextInput, Text, View } from 'react-native';
+import { TextInput, Text } from 'react-native';
 
 import Styles from './../styles';
 
@@ -8,7 +8,7 @@ const InputField = (props) => {
   const _showErrorMessage = (message) => {
     return <Text
       style={Styles.errorText}
-    >* {message}</Text>;
+    >{message}</Text>;
   };
 
   const input = (
