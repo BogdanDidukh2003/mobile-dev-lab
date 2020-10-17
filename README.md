@@ -59,6 +59,7 @@ Install following packages:
   - components
   - config
   - constants
+  - functions
   - screens
   - styles
   - App.js
