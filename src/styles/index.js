@@ -24,6 +24,10 @@ const Styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
+  errorText: {
+    color: 'red',
+  },
+
   hyperlink: {
     color: CONSTANTS.COLORS.SKY_BLUE,
     fontWeight: 'bold',
@@ -37,6 +41,10 @@ const Styles = StyleSheet.create({
     borderWidth: 1,
     marginBottom: 8,
   },
+
+  textInputError: {
+    borderColor: 'red',
+  }
 
 });
 
