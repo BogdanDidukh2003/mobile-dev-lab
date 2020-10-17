@@ -3,12 +3,31 @@ import { StyleSheet } from 'react-native';
 import CONSTANTS from './../constants';
 
 const Styles = StyleSheet.create({
-  
+
+  buttonContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 40,
+    width: 120,
+    backgroundColor: CONSTANTS.COLORS.SKY_BLUE,
+    borderRadius: 13,
+  },
+
+  buttonText: {
+    color: '#fff',
+  },
+
   container: {
     flex: 1,
     backgroundColor: CONSTANTS.COLORS.MAIN_BACKGROUND,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+
+  hyperlink: {
+    color: CONSTANTS.COLORS.SKY_BLUE,
+    fontWeight: 'bold',
+    textDecorationLine: 'underline',
   },
 
   textInput: {

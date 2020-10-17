@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
-import { Button, View, Text, TextInput } from 'react-native';
+import { View, Text } from 'react-native';
 
 import CONSTANTS from './../constants';
 import Styles from './../styles';
-import { Hyperlink } from './../components';
+import { 
+  Button,
+  Hyperlink,
+  InputField,
+} from './../components';
 
 const SignInScreen = ({ navigation }) => {
   const [errorMessage, setErrorMessage] = useState(null);
@@ -19,27 +23,21 @@ const SignInScreen = ({ navigation }) => {
         </Text>
       }
 
-      <TextInput
-        style={Styles.textInput}
-        autoCapitalize="none"
-        autoCorrect={false}
-        placeholder="Email"
+      <InputField 
+        placeholder='Email'
         onChangeText={email => setEmail(email)}
         value={email}
       />
 
-      <TextInput
+      <InputField 
         secureTextEntry
-        style={Styles.textInput}
-        autoCapitalize="none"
-        autoCorrect={false}
-        placeholder="Password"
+        placeholder='Password'
         onChangeText={password => setPassword(password)}
         value={password}
       />
 
       <Button 
-        title="SIGN IN" 
+        title='SIGN IN'
         onPress={() => navigation.navigate(CONSTANTS.SCREENS.MAIN)} 
       />
 
