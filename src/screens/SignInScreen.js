@@ -51,6 +51,16 @@ const SignInScreen = ({ navigation }) => {
     }
   };
 
+  useEffect(() => {
+    return navigation.addListener('focus', () => {
+      setEmail('');
+      setPassword('');
+      setEmailError('');
+      setPasswordError('');
+      setGeneralError('');
+    });
+  }, [navigation]);
+
   const _onPressGoToSignUp = () => {
     navigation.navigate(CONSTANTS.SCREENS.SIGN_UP);
   };
