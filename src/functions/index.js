@@ -1,3 +1,4 @@
+import firebase from './Firebase';
 import {
   validateEmailInput,
   validateNameInput,
@@ -6,6 +7,7 @@ import {
 } from './InputValidation';
 
 export {
+  firebase,
   validateEmailInput,
   validateNameInput,
   validatePhoneInput,

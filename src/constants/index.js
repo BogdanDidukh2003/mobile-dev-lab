@@ -6,6 +6,10 @@ const CONSTANTS = {
     SKY_BLUE: '#58afef',
   },
 
+  FIREBASE: {
+    USERS_COLLECTION: 'Users',
+  },
+
   LOGO: 'Lab 1',
 
   MESSAGES: {

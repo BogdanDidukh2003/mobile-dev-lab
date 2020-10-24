@@ -1,19 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View } from 'react-native';
 
+import CONSTANTS from './../constants';
 import Styles from './../styles';
 import {
   Button,
   InputField,
 } from './../components';
 import {
+  firebase,
   validateEmailInput,
   validateNameInput,
   validatePhoneInput,
   validatePasswordInput,
 } from './../functions';
 
-const SignUpScreen = () => {
+const SignUpScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
@@ -24,6 +26,8 @@ const SignUpScreen = () => {
   const [phoneError, setPhoneError] = useState('');
   const [passwordError, setPasswordError] = useState('');
 
+  const [requestSignUp, setRequestSignUp] = useState(false);
+
   const _validateSignUpInput = () => {
     validateEmailInput(email, setEmail, setEmailError);
     validateNameInput(name, setName, setNameError);
@@ -33,6 +37,24 @@ const SignUpScreen = () => {
 
   const _onPressSignUp = () => {
     _validateSignUpInput();
+    setRequestSignUp(true);
+  };
+
+  useEffect(() => {
+    if (requestSignUp && !(emailError || nameError || phoneError || passwordError)) {
+      handleSignUp();
+    }
+    setRequestSignUp(false);
+  }, [requestSignUp, emailError, nameError, phoneError, passwordError]);
+
+  const handleSignUp = async () => {
+    try {
+      await firebase.signUp(email, name, phone, password, () => {
+        navigation.navigate(CONSTANTS.SCREENS.MAIN);
+      });
+    } catch (error) {
+      alert(error.message);
+    }
   };
 
   return (

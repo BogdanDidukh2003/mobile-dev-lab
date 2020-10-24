@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View } from 'react-native';
 
 import CONSTANTS from './../constants';
@@ -9,6 +9,7 @@ import {
   InputField,
 } from './../components';
 import {
+  firebase,
   validateEmailInput,
   validatePasswordInput,
 } from './../functions';
@@ -20,6 +21,8 @@ const SignInScreen = ({ navigation }) => {
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
 
+  const [requestSignIn, setRequestSignIn] = useState(false);
+
   const _validateSignInInput = () => {
     validateEmailInput(email, setEmail, setEmailError);
     validatePasswordInput(password, setPassword, setPasswordError);
@@ -27,6 +30,24 @@ const SignInScreen = ({ navigation }) => {
 
   const _onPressSignIn = () => {
     _validateSignInInput();
+    setRequestSignIn(true);
+  };
+
+  useEffect(() => {
+    if (requestSignIn && !(emailError || passwordError)) {
+      handleSignIn();
+    }
+    setRequestSignIn(false);
+  }, [requestSignIn, emailError, passwordError]);
+
+  const handleSignIn = async () => {
+    try {
+      await firebase.signIn(email, password, () => {
+        navigation.navigate(CONSTANTS.SCREENS.MAIN);
+      });
+    } catch (error) {
+      alert(error.message);
+    }
   };
 
   const _onPressGoToSignUp = () => {
