@@ -36,7 +36,6 @@ const validatePhoneInput = (phone, setPhone, setPhoneError) => {
 
 const validatePasswordInput = (password, setPassword, setPasswordError) => {
   setPasswordError(CONSTANTS.MESSAGES.DEFAULT);
-  setPassword(password.trim());
 
   if (!password) {
     setPasswordError(CONSTANTS.MESSAGES.FIELD_IS_REQUIRED);
