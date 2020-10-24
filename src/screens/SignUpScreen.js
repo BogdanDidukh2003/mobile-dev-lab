@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 
 import CONSTANTS from './../constants';
 import Styles from './../styles';
@@ -25,6 +25,7 @@ const SignUpScreen = ({ navigation }) => {
   const [nameError, setNameError] = useState('');
   const [phoneError, setPhoneError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+  const [generalError, setGeneralError] = useState('');
 
   const [requestSignUp, setRequestSignUp] = useState(false);
 
@@ -53,7 +54,7 @@ const SignUpScreen = ({ navigation }) => {
         navigation.navigate(CONSTANTS.SCREENS.MAIN);
       });
     } catch (error) {
-      alert(error.message);
+      setGeneralError(error.message);
     }
   };
 
@@ -95,6 +96,12 @@ const SignUpScreen = ({ navigation }) => {
           value={password}
           errorMessage={passwordError}
         />
+      </View>
+
+      <View style={Styles.elementContainer}>
+        <Text
+          style={Styles.errorText}
+        >{generalError}</Text>
       </View>
 
       <View style={Styles.elementContainer}>

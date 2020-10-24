@@ -33,6 +33,8 @@ const Styles = StyleSheet.create({
   },
 
   errorText: {
+    width: '90%',
+    textAlign: 'center',
     color: 'red',
   },
 
