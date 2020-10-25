@@ -1,6 +1,6 @@
 import CONSTANTS from './../constants';
 
-const emailCondition = new RegExp('^(.+)@(.+)$');
+const emailCondition = new RegExp('^(.+)@(.+)(\\.).{2,}$');
 const phoneCondition = new RegExp('^(\\+)?([0-9]+)$');
 
 const validateEmailInput = (email, setEmail, setEmailError) => {
