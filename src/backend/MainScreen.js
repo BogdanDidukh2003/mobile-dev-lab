@@ -8,12 +8,12 @@ export const useMainScreenBackend = () => {
     setName(userDoc.data().name);
   });
 
-  const handleSignOut = () => {
+  const onPressSignOut = () => {
     firebase.signOut();
   };
 
   return {
     name,
-    handleSignOut,
+    onPressSignOut,
   };
 };

@@ -6,7 +6,7 @@ import { Button } from './../components';
 import { useMainScreenBackend } from './../backend';
 
 const MainScreen = () => {
-  const { name, handleSignOut } = useMainScreenBackend();
+  const { name, onPressSignOut } = useMainScreenBackend();
 
   return (
     <View style={Styles.container}>
@@ -18,7 +18,7 @@ const MainScreen = () => {
       <View style={Styles.elementContainer}>
         <Button
           title='SIGN OUT'
-          onPress={handleSignOut}
+          onPress={onPressSignOut}
         />
       </View>
 
