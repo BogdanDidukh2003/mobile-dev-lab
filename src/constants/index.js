@@ -24,7 +24,13 @@ const CONSTANTS = {
     MAIN: 'Main',
     SIGN_IN: 'SignIn',
     SIGN_UP: 'SignUp',
-  }
+  },
+
+  STACKS: {
+    AUTH: 'Auth',
+    APP: 'App',
+  },
+
 };
 
 export default CONSTANTS;

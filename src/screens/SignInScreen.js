@@ -30,6 +30,7 @@ const SignInScreen = ({ navigation }) => {
   };
 
   const _onPressSignIn = () => {
+    setGeneralError('');
     _validateSignInInput();
     setRequestSignIn(true);
   };
@@ -43,11 +44,9 @@ const SignInScreen = ({ navigation }) => {
 
   const handleSignIn = async () => {
     try {
-      await firebase.signIn(email, password, () => {
-        navigation.navigate(CONSTANTS.SCREENS.MAIN);
-      });
-    } catch (error) {
-      setGeneralError(error.message);
+      await firebase.signIn(email, password);
+    } catch ({ message }) {
+      setGeneralError(message);
     }
   };
 

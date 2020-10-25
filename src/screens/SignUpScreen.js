@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text } from 'react-native';
 
-import CONSTANTS from './../constants';
 import Styles from './../styles';
 import {
   Button,
@@ -15,7 +14,7 @@ import {
   validatePasswordInput,
 } from './../functions';
 
-const SignUpScreen = ({ navigation }) => {
+const SignUpScreen = () => {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
@@ -50,11 +49,9 @@ const SignUpScreen = ({ navigation }) => {
 
   const handleSignUp = async () => {
     try {
-      await firebase.signUp(email, name, phone, password, () => {
-        navigation.navigate(CONSTANTS.SCREENS.MAIN);
-      });
-    } catch (error) {
-      setGeneralError(error.message);
+      await firebase.signUp(email, name, phone, password);
+    } catch ({ message }) {
+      setGeneralError(message);
     }
   };
 

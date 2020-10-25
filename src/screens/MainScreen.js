@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Text, View } from 'react-native';
 
-import CONSTANTS from './../constants';
 import Styles from './../styles';
+import { Button } from './../components';
 import { firebase } from './../functions'
 
 const MainScreen = () => {
@@ -12,9 +12,24 @@ const MainScreen = () => {
     setName(userDoc.data().name);
   });
 
+  const handleSignOut = () => {
+    firebase.signOut();
+  };
+
   return (
     <View style={Styles.container}>
-      <Text>Welcome, {name}</Text>
+
+      <View style={Styles.elementContainer}>
+        <Text>Welcome, {name}</Text>
+      </View>
+
+      <View style={Styles.elementContainer}>
+        <Button
+          title='SIGN OUT'
+          onPress={handleSignOut}
+        />
+      </View>
+
     </View>
   );
 }

@@ -12,7 +12,7 @@ class Firebase {
     this.collectionReference = firebase.firestore().collection(CONSTANTS.FIREBASE.USERS_COLLECTION);
   }
 
-  async signUp(email, name, phone, password, onSuccessFunction) {
+  async signUp(email, name, phone, password) {
     return await this.auth
       .createUserWithEmailAndPassword(email, password)
       .then((loggedUser) => {
@@ -20,14 +20,12 @@ class Firebase {
         userData.set({
           name: name,
           phone: phone,
-        }).then(onSuccessFunction);
+        });
       });
   }
 
-  async signIn(email, password, onSuccessFunction) {
-    return await this.auth
-      .signInWithEmailAndPassword(email, password)
-      .then(onSuccessFunction);
+  async signIn(email, password) {
+    return await this.auth.signInWithEmailAndPassword(email, password);
   }
 
   signOut() {
