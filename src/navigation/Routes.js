@@ -10,12 +10,8 @@ export const Routes = () => {
 
   useEffect(() => {
     firebase.auth.onAuthStateChanged((user) => {
-      if (user) {
-        setUserIsSignedIn(true);
-      } else {
-        setUserIsSignedIn(false);
-      }
-    })
+      setUserIsSignedIn(user ? true : false);
+    });
   }, []);
 
   return (
