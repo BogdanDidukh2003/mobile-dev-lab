@@ -56,13 +56,15 @@ Install following packages:
 <code>src</code> is the directory for development:
 
 - src
-  - components
-  - config
-  - constants
-  - functions
-  - screens
-  - styles
-  - App.js
+  - <code>backend</code> - for screen backend logic
+  - <code>components</code> - for reusable components
+  - <code>config</code> - for configuration files
+  - <code>constants</code> - for set of constants
+  - <code>functions</code> - for written functions and api
+  - <code>navigation</code> - for navigation setup
+  - <code>screens</code> - for screen user interface
+  - <code>styles</code> - for reusable styles
+  - <code>App.js</code> - entry point
 
 ## Running the mobile application
 
