@@ -1,68 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { View, Text } from 'react-native';
 
-import CONSTANTS from './../constants';
 import Styles from './../styles';
 import {
   Button,
   Hyperlink,
   InputField,
 } from './../components';
-import {
-  firebase,
-  validateEmailInput,
-  validatePasswordInput,
-} from './../functions';
+import { useSignInScreenBackend } from './../backend';
 
 const SignInScreen = ({ navigation }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const [emailError, setEmailError] = useState('');
-  const [passwordError, setPasswordError] = useState('');
-  const [generalError, setGeneralError] = useState('');
-
-  const [requestSignIn, setRequestSignIn] = useState(false);
-
-  const _validateSignInInput = () => {
-    validateEmailInput(email, setEmail, setEmailError);
-    validatePasswordInput(password, setPassword, setPasswordError);
-  };
-
-  const _onPressSignIn = () => {
-    setGeneralError('');
-    _validateSignInInput();
-    setRequestSignIn(true);
-  };
-
-  useEffect(() => {
-    if (requestSignIn && !(emailError || passwordError)) {
-      handleSignIn();
-    }
-    setRequestSignIn(false);
-  }, [requestSignIn, emailError, passwordError]);
-
-  const handleSignIn = async () => {
-    try {
-      await firebase.signIn(email, password);
-    } catch ({ message }) {
-      setGeneralError(message);
-    }
-  };
-
-  useEffect(() => {
-    return navigation.addListener('focus', () => {
-      setEmail('');
-      setPassword('');
-      setEmailError('');
-      setPasswordError('');
-      setGeneralError('');
-    });
-  }, [navigation]);
-
-  const _onPressGoToSignUp = () => {
-    navigation.navigate(CONSTANTS.SCREENS.SIGN_UP);
-  };
+  const {
+    email,
+    password,
+    emailError,
+    passwordError,
+    generalError,
+    onChangeEmail,
+    onChangePassword,
+    onPressSignIn,
+    onPressGoToSignUp,
+   } = useSignInScreenBackend(navigation);
 
   return (
     <View style={Styles.container}>
@@ -70,7 +28,7 @@ const SignInScreen = ({ navigation }) => {
       <View style={Styles.elementContainer}>
         <InputField
           placeholder='Email'
-          onChangeText={email => setEmail(email)}
+          onChangeText={onChangeEmail}
           value={email}
           errorMessage={emailError}
         />
@@ -80,7 +38,7 @@ const SignInScreen = ({ navigation }) => {
         <InputField
           secureTextEntry
           placeholder='Password'
-          onChangeText={password => setPassword(password)}
+          onChangeText={onChangePassword}
           value={password}
           errorMessage={passwordError}
         />
@@ -95,14 +53,14 @@ const SignInScreen = ({ navigation }) => {
       <View style={Styles.elementContainer}>
         <Button
           title='SIGN IN'
-          onPress={_onPressSignIn}
+          onPress={onPressSignIn}
         />
       </View>
 
       <View style={Styles.elementContainer}>
         <Hyperlink
           text="Don't have an account? Sign Up"
-          onPress={_onPressGoToSignUp}
+          onPress={onPressGoToSignUp}
         />
       </View>
 

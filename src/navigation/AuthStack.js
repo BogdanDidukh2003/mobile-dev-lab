@@ -18,14 +18,14 @@ export const AuthStack = () => {
         name={CONSTANTS.SCREENS.SIGN_IN}
         component={SignInScreen}
         options={{
-          title: 'Sign In',
+          title: CONSTANTS.SCREEN_TITLES.SIGN_IN,
         }}
       />
       <Stack.Screen
         name={CONSTANTS.SCREENS.SIGN_UP}
         component={SignUpScreen}
         options={{
-          title: 'Create Account',
+          title: CONSTANTS.SCREEN_TITLES.SIGN_UP,
         }}
       />
     </Stack.Navigator>

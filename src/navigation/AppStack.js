@@ -17,7 +17,7 @@ export const AppStack = () => {
         name={CONSTANTS.SCREENS.MAIN}
         component={MainScreen}
         options={{
-          title: 'Main',
+          title: CONSTANTS.SCREEN_TITLES.MAIN,
         }}
       />
     </Stack.Navigator>

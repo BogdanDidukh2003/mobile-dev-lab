@@ -20,6 +20,12 @@ const CONSTANTS = {
     PASSWORD_TOO_SHORT: 'password is too short, min 8 characters required',
   },
 
+  SCREEN_TITLES: {
+    MAIN: 'Main',
+    SIGN_IN: 'Sign In',
+    SIGN_UP: 'Create account',
+  },
+
   SCREENS: {
     MAIN: 'Main',
     SIGN_IN: 'SignIn',

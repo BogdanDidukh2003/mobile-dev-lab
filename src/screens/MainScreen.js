@@ -1,20 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Text, View } from 'react-native';
 
 import Styles from './../styles';
 import { Button } from './../components';
-import { firebase } from './../functions'
+import { useMainScreenBackend } from './../backend';
 
 const MainScreen = () => {
-  const [name, setName] = useState('');
-
-  firebase.getUserData((userDoc) => {
-    setName(userDoc.data().name);
-  });
-
-  const handleSignOut = () => {
-    firebase.signOut();
-  };
+  const { name, handleSignOut } = useMainScreenBackend();
 
   return (
     <View style={Styles.container}>

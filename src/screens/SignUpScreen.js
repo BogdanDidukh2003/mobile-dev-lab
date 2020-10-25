@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { View, Text } from 'react-native';
 
 import Styles from './../styles';
@@ -6,54 +6,25 @@ import {
   Button,
   InputField,
 } from './../components';
-import {
-  firebase,
-  validateEmailInput,
-  validateNameInput,
-  validatePhoneInput,
-  validatePasswordInput,
-} from './../functions';
+import { useSignUpScreenBackend } from './../backend';
 
 const SignUpScreen = () => {
-  const [email, setEmail] = useState('');
-  const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
-  const [password, setPassword] = useState('');
-
-  const [emailError, setEmailError] = useState('');
-  const [nameError, setNameError] = useState('');
-  const [phoneError, setPhoneError] = useState('');
-  const [passwordError, setPasswordError] = useState('');
-  const [generalError, setGeneralError] = useState('');
-
-  const [requestSignUp, setRequestSignUp] = useState(false);
-
-  const _validateSignUpInput = () => {
-    validateEmailInput(email, setEmail, setEmailError);
-    validateNameInput(name, setName, setNameError);
-    validatePhoneInput(phone, setPhone, setPhoneError);
-    validatePasswordInput(password, setPassword, setPasswordError);
-  };
-
-  const _onPressSignUp = () => {
-    _validateSignUpInput();
-    setRequestSignUp(true);
-  };
-
-  useEffect(() => {
-    if (requestSignUp && !(emailError || nameError || phoneError || passwordError)) {
-      handleSignUp();
-    }
-    setRequestSignUp(false);
-  }, [requestSignUp, emailError, nameError, phoneError, passwordError]);
-
-  const handleSignUp = async () => {
-    try {
-      await firebase.signUp(email, name, phone, password);
-    } catch ({ message }) {
-      setGeneralError(message);
-    }
-  };
+  const {
+    email,
+    name,
+    phone,
+    password,
+    emailError,
+    nameError,
+    phoneError,
+    passwordError,
+    generalError,
+    onChangeEmail,
+    onChangeName,
+    onChangePhone,
+    onChangePassword,
+    onPressSignUp,
+  } = useSignUpScreenBackend();
 
   return (
     <View style={Styles.container}>
@@ -61,7 +32,7 @@ const SignUpScreen = () => {
       <View style={Styles.elementContainer}>
         <InputField
           placeholder='Email'
-          onChangeText={email => setEmail(email)}
+          onChangeText={onChangeEmail}
           value={email}
           errorMessage={emailError}
         />
@@ -70,7 +41,7 @@ const SignUpScreen = () => {
       <View style={Styles.elementContainer}>
         <InputField
           placeholder='Name'
-          onChangeText={name => setName(name)}
+          onChangeText={onChangeName}
           value={name}
           errorMessage={nameError}
         />
@@ -79,7 +50,7 @@ const SignUpScreen = () => {
       <View style={Styles.elementContainer}>
         <InputField
           placeholder='Phone'
-          onChangeText={phone => setPhone(phone)}
+          onChangeText={onChangePhone}
           value={phone}
           errorMessage={phoneError}
         />
@@ -89,7 +60,7 @@ const SignUpScreen = () => {
         <InputField
           secureTextEntry
           placeholder='Password'
-          onChangeText={password => setPassword(password)}
+          onChangeText={onChangePassword}
           value={password}
           errorMessage={passwordError}
         />
@@ -104,7 +75,7 @@ const SignUpScreen = () => {
       <View style={Styles.elementContainer}>
         <Button
           title='SIGN UP'
-          onPress={_onPressSignUp}
+          onPress={onPressSignUp}
         />
       </View>
 
