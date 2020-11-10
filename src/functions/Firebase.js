@@ -1,4 +1,5 @@
 import firebase from 'firebase';
+import 'firebase/firestore';
 
 import { firebaseConfig } from './../config';
 import CONSTANTS from './../constants';
