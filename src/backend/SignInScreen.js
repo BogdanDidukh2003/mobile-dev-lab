@@ -17,17 +17,6 @@ export const useSignInScreenBackend = (navigation) => {
 
   const [requestSignIn, setRequestSignIn] = useState(false);
 
-  const _validateSignInInput = () => {
-    validateEmailInput(email, setEmail, setEmailError);
-    validatePasswordInput(password, setPassword, setPasswordError);
-  };
-
-  const onPressSignIn = () => {
-    setGeneralError('');
-    _validateSignInInput();
-    setRequestSignIn(true);
-  };
-
   useEffect(() => {
     if (requestSignIn && !(emailError || passwordError)) {
       handleSignIn();
@@ -53,9 +42,36 @@ export const useSignInScreenBackend = (navigation) => {
     });
   }, [navigation]);
 
+  const _validateSignInInput = () => {
+    validateEmailInput(email, setEmail, setEmailError);
+    validatePasswordInput(password, setPasswordError);
+  };
+
+  const onPressSignIn = () => {
+    setGeneralError('');
+    _validateSignInInput();
+    setRequestSignIn(true);
+  };
+
   const onPressGoToSignUp = () => {
     navigation.navigate(CONSTANTS.SCREENS.SIGN_UP);
   };
+
+  const onChangeEmail = (email) => {
+    if (emailError) {
+      validateEmailInput(email, setEmail, setEmailError);
+    }
+
+    setEmail(email);
+  };
+
+  const onChangePassword = (password) => {
+    if (passwordError) {
+      validatePasswordInput(password, setPasswordError);
+    }
+
+    setPassword(password);
+  }
 
   return {
     email,
@@ -63,8 +79,8 @@ export const useSignInScreenBackend = (navigation) => {
     emailError,
     passwordError,
     generalError,
-    onChangeEmail: (email) => { setEmail(email) },
-    onChangePassword: (password) => { setPassword(password) },
+    onChangeEmail,
+    onChangePassword,
     onPressSignIn,
     onPressGoToSignUp,
   };

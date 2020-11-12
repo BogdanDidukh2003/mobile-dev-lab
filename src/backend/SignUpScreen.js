@@ -24,17 +24,24 @@ export const useSignUpScreenBackend = () => {
   const [generalError, setGeneralError] = useState('');
 
   const [
-    forcedPasswordErrorHighlight, 
+    forcedPasswordErrorHighlight,
     setForcedPasswordErrorHighlight] = useState(false);
 
   const [requestSignUp, setRequestSignUp] = useState(false);
+
+  useEffect(() => {
+    if (requestSignUp && !(emailError || nameError || phoneError || passwordError)) {
+      handleSignUp();
+    }
+    setRequestSignUp(false);
+  }, [requestSignUp, emailError, nameError, phoneError, passwordError]);
 
   const _validateSignUpInput = () => {
     validateEmailInput(email, setEmail, setEmailError);
     validateNameInput(name, setName, setNameError);
     validatePhoneInput(phone, setPhone, setPhoneError);
     validatePasswordInputOnSignUp(
-      password, repeatPassword, setPasswordError, setRepeatPasswordError, 
+      password, repeatPassword, setPasswordError, setRepeatPasswordError,
       setForcedPasswordErrorHighlight);
   };
 
@@ -44,19 +51,55 @@ export const useSignUpScreenBackend = () => {
     setRequestSignUp(true);
   };
 
-  useEffect(() => {
-    if (requestSignUp && !(emailError || nameError || phoneError || passwordError)) {
-      handleSignUp();
-    }
-    setRequestSignUp(false);
-  }, [requestSignUp, emailError, nameError, phoneError, passwordError]);
-
   const handleSignUp = async () => {
     try {
       await firebase.signUp(email, name, phone, password);
     } catch ({ message }) {
       setGeneralError(message);
     }
+  };
+
+  const onChangeEmail = (email) => {
+    if (emailError) {
+      validateEmailInput(email, setEmail, setEmailError);
+    }
+
+    setEmail(email);
+  };
+
+  const onChangeName = (name) => {
+    if (nameError) {
+      validateNameInput(name, setName, setNameError);
+    }
+
+    setName(name);
+  };
+
+  const onChangePhone = (phone) => {
+    if (phoneError) {
+      validatePhoneInput(phone, setPhone, setPhoneError);
+    }
+    setPhone(phone);
+  };
+
+  const onChangePassword = (password) => {
+    if (passwordError) {
+      validatePasswordInputOnSignUp(
+        password, repeatPassword, setPasswordError, setRepeatPasswordError,
+        setForcedPasswordErrorHighlight);
+    }
+
+    setPassword(password);
+  };
+
+  const onChangeRepeatPassword = (repeatPassword) => {
+    if (repeatPasswordError) {
+      validatePasswordInputOnSignUp(
+        password, repeatPassword, setPasswordError, setRepeatPasswordError,
+        setForcedPasswordErrorHighlight);
+    }
+
+    setRepeatPassword(repeatPassword);
   };
 
   return {
@@ -72,11 +115,11 @@ export const useSignUpScreenBackend = () => {
     repeatPasswordError,
     generalError,
     forcedPasswordErrorHighlight,
-    onChangeEmail: (email) => { setEmail(email) },
-    onChangeName: (name) => { setName(name) },
-    onChangePhone: (phone) => { setPhone(phone) },
-    onChangePassword: (password) => { setPassword(password) },
-    onChangeRepeatPassword: (repeatPassword) => { setRepeatPassword(repeatPassword) },
+    onChangeEmail,
+    onChangeName,
+    onChangePhone,
+    onChangePassword,
+    onChangeRepeatPassword,
     onPressSignUp,
   };
 };
