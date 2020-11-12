@@ -27,8 +27,8 @@ const InputField = (props) => {
       value={props.value}
       placeholderTextColor={
         theme == CONSTANTS.THEMES.LIGHT
-        ? CONSTANTS.COLORS.GREY_TEXT
-        : CONSTANTS.COLORS.LIGHT_TEXT
+          ? CONSTANTS.COLORS.GREY_TEXT
+          : CONSTANTS.COLORS.LIGHT_TEXT
       }
     />
   );

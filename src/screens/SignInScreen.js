@@ -22,7 +22,7 @@ const SignInScreen = ({ navigation }) => {
     onPressSignIn,
     onPressGoToSignUp,
   } = useSignInScreenBackend(navigation);
-  
+
   const { theme } = React.useContext(ThemeContext);
 
   return (

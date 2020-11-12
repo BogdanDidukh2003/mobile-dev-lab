@@ -45,23 +45,23 @@ const validatePasswordInput = (password, setPasswordError) => {
 };
 
 const validatePasswordInputOnSignUp = (
-  password, repeatPassword, setPasswordError, setRepeatPasswordError, 
+  password, repeatPassword, setPasswordError, setRepeatPasswordError,
   setForcedPasswordErrorHighlight) => {
-    setForcedPasswordErrorHighlight(false);
-    setPasswordError(CONSTANTS.MESSAGES.DEFAULT);
-    setRepeatPasswordError(CONSTANTS.MESSAGES.DEFAULT);
+  setForcedPasswordErrorHighlight(false);
+  setPasswordError(CONSTANTS.MESSAGES.DEFAULT);
+  setRepeatPasswordError(CONSTANTS.MESSAGES.DEFAULT);
 
-    if (password != repeatPassword) {
-      setForcedPasswordErrorHighlight(true);
-      setRepeatPasswordError(CONSTANTS.MESSAGES.PASSWORDS_DO_NOT_MATCH);
-    } else if (!password) {
-      setPasswordError(CONSTANTS.MESSAGES.FIELD_IS_REQUIRED);
-      setRepeatPasswordError(CONSTANTS.MESSAGES.FIELD_IS_REQUIRED);
-    } else if (password.length < 8) {
-      setForcedPasswordErrorHighlight(true);
-      setRepeatPasswordError(CONSTANTS.MESSAGES.PASSWORD_TOO_SHORT);
-    }
-  };
+  if (password != repeatPassword) {
+    setForcedPasswordErrorHighlight(true);
+    setRepeatPasswordError(CONSTANTS.MESSAGES.PASSWORDS_DO_NOT_MATCH);
+  } else if (!password) {
+    setPasswordError(CONSTANTS.MESSAGES.FIELD_IS_REQUIRED);
+    setRepeatPasswordError(CONSTANTS.MESSAGES.FIELD_IS_REQUIRED);
+  } else if (password.length < 8) {
+    setForcedPasswordErrorHighlight(true);
+    setRepeatPasswordError(CONSTANTS.MESSAGES.PASSWORD_TOO_SHORT);
+  }
+};
 
 export {
   validateEmailInput,
