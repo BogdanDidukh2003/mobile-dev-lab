@@ -1,9 +1,15 @@
 const CONSTANTS = {
 
   COLORS: {
-    MAIN_BACKGROUND: '#fff',
+    MAIN_BACKGROUND: '#FFFFFF',
+    DARK_BACKGROUND: '#0A1D26',
     ADDITIONAL_BACKGROUND: '#5b5b5b',
     SKY_BLUE: '#58afef',
+    LIGHT_ORANGE: '#EB884A',
+    WHITE_TEXT: '#FFFFFF',
+    LIGHT_TEXT: '#D3D3D3',
+    GREY_TEXT: '#808080',
+    BLACK_TEXT: '#000000',
   },
 
   FIREBASE: {
@@ -36,6 +42,11 @@ const CONSTANTS = {
   STACKS: {
     AUTH: 'Auth',
     APP: 'App',
+  },
+
+  THEMES: {
+    DARK: 'dark',
+    LIGHT: 'light',
   },
 
 };

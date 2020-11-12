@@ -7,6 +7,7 @@ import {
   InputField,
 } from './../components';
 import { useSignUpScreenBackend } from './../backend';
+import { ThemeContext } from '../util';
 
 const SignUpScreen = () => {
   const {
@@ -30,10 +31,12 @@ const SignUpScreen = () => {
     onPressSignUp,
   } = useSignUpScreenBackend();
 
-  return (
-    <View style={Styles.container}>
+  const { theme } = React.useContext(ThemeContext);
 
-      <View style={Styles.elementContainer}>
+  return (
+    <View style={Styles[theme].container}>
+
+      <View style={Styles[theme].elementContainer}>
         <InputField
           placeholder='Email'
           onChangeText={onChangeEmail}
@@ -42,7 +45,7 @@ const SignUpScreen = () => {
         />
       </View>
 
-      <View style={Styles.elementContainer}>
+      <View style={Styles[theme].elementContainer}>
         <InputField
           placeholder='Name'
           onChangeText={onChangeName}
@@ -51,7 +54,7 @@ const SignUpScreen = () => {
         />
       </View>
 
-      <View style={Styles.elementContainer}>
+      <View style={Styles[theme].elementContainer}>
         <InputField
           placeholder='Phone'
           onChangeText={onChangePhone}
@@ -60,7 +63,7 @@ const SignUpScreen = () => {
         />
       </View>
 
-      <View style={Styles.elementContainer}>
+      <View style={Styles[theme].elementContainer}>
         <InputField
           secureTextEntry
           placeholder='Password'
@@ -71,7 +74,7 @@ const SignUpScreen = () => {
         />
       </View>
 
-      <View style={Styles.elementContainer}>
+      <View style={Styles[theme].elementContainer}>
         <InputField
           secureTextEntry
           placeholder='Repeat password'
@@ -81,13 +84,13 @@ const SignUpScreen = () => {
         />
       </View>
 
-      <View style={Styles.elementContainer}>
+      <View style={Styles[theme].elementContainer}>
         <Text
-          style={Styles.errorText}
+          style={Styles[theme].errorText}
         >{generalError}</Text>
       </View>
 
-      <View style={Styles.elementContainer}>
+      <View style={Styles[theme].elementContainer}>
         <Button
           title='SIGN UP'
           onPress={onPressSignUp}

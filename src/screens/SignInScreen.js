@@ -8,6 +8,7 @@ import {
   InputField,
 } from './../components';
 import { useSignInScreenBackend } from './../backend';
+import { ThemeContext } from './../util';
 
 const SignInScreen = ({ navigation }) => {
   const {
@@ -20,12 +21,14 @@ const SignInScreen = ({ navigation }) => {
     onChangePassword,
     onPressSignIn,
     onPressGoToSignUp,
-   } = useSignInScreenBackend(navigation);
+  } = useSignInScreenBackend(navigation);
+  
+  const { theme } = React.useContext(ThemeContext);
 
   return (
-    <View style={Styles.container}>
+    <View style={Styles[theme].container}>
 
-      <View style={Styles.elementContainer}>
+      <View style={Styles[theme].elementContainer}>
         <InputField
           placeholder='Email'
           onChangeText={onChangeEmail}
@@ -34,7 +37,7 @@ const SignInScreen = ({ navigation }) => {
         />
       </View>
 
-      <View style={Styles.elementContainer}>
+      <View style={Styles[theme].elementContainer}>
         <InputField
           secureTextEntry
           placeholder='Password'
@@ -44,20 +47,20 @@ const SignInScreen = ({ navigation }) => {
         />
       </View>
 
-      <View style={Styles.elementContainer}>
+      <View style={Styles[theme].elementContainer}>
         <Text
-          style={Styles.errorText}
+          style={Styles[theme].errorText}
         >{generalError}</Text>
       </View>
 
-      <View style={Styles.elementContainer}>
+      <View style={Styles[theme].elementContainer}>
         <Button
           title='SIGN IN'
           onPress={onPressSignIn}
         />
       </View>
 
-      <View style={Styles.elementContainer}>
+      <View style={Styles[theme].elementContainer}>
         <Hyperlink
           text="Don't have an account? Sign Up"
           onPress={onPressGoToSignUp}
