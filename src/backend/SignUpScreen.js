@@ -23,6 +23,10 @@ export const useSignUpScreenBackend = () => {
   const [repeatPasswordError, setRepeatPasswordError] = useState('');
   const [generalError, setGeneralError] = useState('');
 
+  const [
+    forcedPasswordErrorHighlight, 
+    setForcedPasswordErrorHighlight] = useState(false);
+
   const [requestSignUp, setRequestSignUp] = useState(false);
 
   const _validateSignUpInput = () => {
@@ -30,7 +34,8 @@ export const useSignUpScreenBackend = () => {
     validateNameInput(name, setName, setNameError);
     validatePhoneInput(phone, setPhone, setPhoneError);
     validatePasswordInputOnSignUp(
-      password, repeatPassword, setPasswordError, setRepeatPasswordError);
+      password, repeatPassword, setPasswordError, setRepeatPasswordError, 
+      setForcedPasswordErrorHighlight);
   };
 
   const onPressSignUp = () => {
@@ -66,6 +71,7 @@ export const useSignUpScreenBackend = () => {
     passwordError,
     repeatPasswordError,
     generalError,
+    forcedPasswordErrorHighlight,
     onChangeEmail: (email) => { setEmail(email) },
     onChangeName: (name) => { setName(name) },
     onChangePhone: (phone) => { setPhone(phone) },

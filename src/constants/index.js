@@ -19,7 +19,6 @@ const CONSTANTS = {
     INVALID_VALUE: 'value is invalid',
     PASSWORD_TOO_SHORT: 'password is too short, min 8 characters required',
     PASSWORDS_DO_NOT_MATCH: 'passwords do not match, try again',
-    WHITESPACE: ' ',
   },
 
   SCREEN_TITLES: {

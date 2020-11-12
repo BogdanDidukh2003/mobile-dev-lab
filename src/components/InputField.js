@@ -14,7 +14,7 @@ const InputField = (props) => {
   const input = (
     <TextInput
       secureTextEntry={props.secureTextEntry}
-      style={props.errorMessage ?
+      style={props.errorMessage || props.forcedErrorHighlight ?
         [Styles.textInput, Styles.textInputError]
         : Styles.textInput}
       autoCapitalize='none'

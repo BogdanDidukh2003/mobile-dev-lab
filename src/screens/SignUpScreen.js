@@ -21,6 +21,7 @@ const SignUpScreen = () => {
     passwordError,
     repeatPasswordError,
     generalError,
+    forcedPasswordErrorHighlight,
     onChangeEmail,
     onChangeName,
     onChangePhone,
@@ -66,6 +67,7 @@ const SignUpScreen = () => {
           onChangeText={onChangePassword}
           value={password}
           errorMessage={passwordError}
+          forcedErrorHighlight={forcedPasswordErrorHighlight}
         />
       </View>
 

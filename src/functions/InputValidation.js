@@ -45,18 +45,20 @@ const validatePasswordInput = (password, setPassword, setPasswordError) => {
 };
 
 const validatePasswordInputOnSignUp = (
-  password, repeatPassword, setPasswordError, setRepeatPasswordError) => {
+  password, repeatPassword, setPasswordError, setRepeatPasswordError, 
+  setForcedPasswordErrorHighlight) => {
+    setForcedPasswordErrorHighlight(false);
     setPasswordError(CONSTANTS.MESSAGES.DEFAULT);
     setRepeatPasswordError(CONSTANTS.MESSAGES.DEFAULT);
 
     if (password != repeatPassword) {
-      setPasswordError(CONSTANTS.MESSAGES.WHITESPACE);
+      setForcedPasswordErrorHighlight(true);
       setRepeatPasswordError(CONSTANTS.MESSAGES.PASSWORDS_DO_NOT_MATCH);
     } else if (!password) {
       setPasswordError(CONSTANTS.MESSAGES.FIELD_IS_REQUIRED);
       setRepeatPasswordError(CONSTANTS.MESSAGES.FIELD_IS_REQUIRED);
     } else if (password.length < 8) {
-      setPasswordError(CONSTANTS.MESSAGES.WHITESPACE);
+      setForcedPasswordErrorHighlight(true);
       setRepeatPasswordError(CONSTANTS.MESSAGES.PASSWORD_TOO_SHORT);
     }
   };
