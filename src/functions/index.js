@@ -4,6 +4,7 @@ import {
   validateNameInput,
   validatePhoneInput,
   validatePasswordInput,
+  validatePasswordInputOnSignUp,
 } from './InputValidation';
 
 export {
@@ -12,4 +13,5 @@ export {
   validateNameInput,
   validatePhoneInput,
   validatePasswordInput,
+  validatePasswordInputOnSignUp,
 };

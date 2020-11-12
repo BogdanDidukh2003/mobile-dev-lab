@@ -14,15 +14,18 @@ const SignUpScreen = () => {
     name,
     phone,
     password,
+    repeatPassword,
     emailError,
     nameError,
     phoneError,
     passwordError,
+    repeatPasswordError,
     generalError,
     onChangeEmail,
     onChangeName,
     onChangePhone,
     onChangePassword,
+    onChangeRepeatPassword,
     onPressSignUp,
   } = useSignUpScreenBackend();
 
@@ -63,6 +66,16 @@ const SignUpScreen = () => {
           onChangeText={onChangePassword}
           value={password}
           errorMessage={passwordError}
+        />
+      </View>
+
+      <View style={Styles.elementContainer}>
+        <InputField
+          secureTextEntry
+          placeholder='Repeat password'
+          onChangeText={onChangeRepeatPassword}
+          value={repeatPassword}
+          errorMessage={repeatPasswordError}
         />
       </View>
 

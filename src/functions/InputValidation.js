@@ -44,9 +44,27 @@ const validatePasswordInput = (password, setPassword, setPasswordError) => {
   }
 };
 
+const validatePasswordInputOnSignUp = (
+  password, repeatPassword, setPasswordError, setRepeatPasswordError) => {
+    setPasswordError(CONSTANTS.MESSAGES.DEFAULT);
+    setRepeatPasswordError(CONSTANTS.MESSAGES.DEFAULT);
+
+    if (password != repeatPassword) {
+      setPasswordError(CONSTANTS.MESSAGES.WHITESPACE);
+      setRepeatPasswordError(CONSTANTS.MESSAGES.PASSWORDS_DO_NOT_MATCH);
+    } else if (!password) {
+      setPasswordError(CONSTANTS.MESSAGES.FIELD_IS_REQUIRED);
+      setRepeatPasswordError(CONSTANTS.MESSAGES.FIELD_IS_REQUIRED);
+    } else if (password.length < 8) {
+      setPasswordError(CONSTANTS.MESSAGES.WHITESPACE);
+      setRepeatPasswordError(CONSTANTS.MESSAGES.PASSWORD_TOO_SHORT);
+    }
+  };
+
 export {
   validateEmailInput,
   validateNameInput,
   validatePhoneInput,
   validatePasswordInput,
+  validatePasswordInputOnSignUp,
 };

@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
+import CONSTANTS from '../constants';
 
 import {
   firebase,
   validateEmailInput,
   validateNameInput,
   validatePhoneInput,
-  validatePasswordInput,
+  validatePasswordInputOnSignUp,
 } from './../functions';
 
 export const useSignUpScreenBackend = () => {
@@ -13,11 +14,13 @@ export const useSignUpScreenBackend = () => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
+  const [repeatPassword, setRepeatPassword] = useState('');
 
   const [emailError, setEmailError] = useState('');
   const [nameError, setNameError] = useState('');
   const [phoneError, setPhoneError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+  const [repeatPasswordError, setRepeatPasswordError] = useState('');
   const [generalError, setGeneralError] = useState('');
 
   const [requestSignUp, setRequestSignUp] = useState(false);
@@ -26,10 +29,12 @@ export const useSignUpScreenBackend = () => {
     validateEmailInput(email, setEmail, setEmailError);
     validateNameInput(name, setName, setNameError);
     validatePhoneInput(phone, setPhone, setPhoneError);
-    validatePasswordInput(password, setPassword, setPasswordError);
+    validatePasswordInputOnSignUp(
+      password, repeatPassword, setPasswordError, setRepeatPasswordError);
   };
 
   const onPressSignUp = () => {
+    setGeneralError(CONSTANTS.MESSAGES.DEFAULT);
     _validateSignUpInput();
     setRequestSignUp(true);
   };
@@ -54,15 +59,18 @@ export const useSignUpScreenBackend = () => {
     name,
     phone,
     password,
+    repeatPassword,
     emailError,
     nameError,
     phoneError,
     passwordError,
+    repeatPasswordError,
     generalError,
     onChangeEmail: (email) => { setEmail(email) },
     onChangeName: (name) => { setName(name) },
     onChangePhone: (phone) => { setPhone(phone) },
     onChangePassword: (password) => { setPassword(password) },
+    onChangeRepeatPassword: (repeatPassword) => { setRepeatPassword(repeatPassword) },
     onPressSignUp,
   };
 };
