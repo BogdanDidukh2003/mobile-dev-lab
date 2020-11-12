@@ -14,7 +14,9 @@ const MainScreen = () => {
     <View style={Styles[theme].container}>
 
       <View style={Styles[theme].elementContainer}>
-        <Text>Welcome, {name}</Text>
+        <Text
+          style={Styles[theme].textStyle}
+        >Welcome, {name}</Text>
       </View>
 
       <View style={Styles[theme].elementContainer}>

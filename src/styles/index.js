@@ -46,6 +46,13 @@ Styles[CONSTANTS.THEMES.LIGHT] = StyleSheet.create({
     textDecorationLine: 'underline',
   },
 
+  switchThemeButton: {
+    fontSize: 40,
+    color: CONSTANTS.COLORS.SKY_BLUE,
+    marginRight: 8,
+    marginBottom: 8,
+  },
+
   textInput: {
     height: 40,
     width: '90%',
@@ -53,11 +60,16 @@ Styles[CONSTANTS.THEMES.LIGHT] = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 8,
     padding: 10,
+    color: CONSTANTS.COLORS.BLACK_TEXT,
   },
 
   textInputError: {
     borderColor: 'red',
-  }
+  },
+
+  textStyle: {
+    color: CONSTANTS.COLORS.BLACK_TEXT,
+  },
 
 });
 
@@ -103,6 +115,13 @@ Styles[CONSTANTS.THEMES.DARK] = StyleSheet.create({
     textDecorationLine: 'underline',
   },
 
+  switchThemeButton: {
+    fontSize: 40,
+    color: CONSTANTS.COLORS.LIGHT_ORANGE,
+    marginRight: 8,
+    marginBottom: 8,
+  },
+
   textInput: {
     height: 40,
     width: '90%',
@@ -115,7 +134,11 @@ Styles[CONSTANTS.THEMES.DARK] = StyleSheet.create({
 
   textInputError: {
     borderColor: 'red',
-  }
+  },
+
+  textStyle: {
+    color: CONSTANTS.COLORS.WHITE_TEXT,
+  },
 
 });
 

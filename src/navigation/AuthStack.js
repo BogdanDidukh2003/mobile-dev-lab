@@ -1,31 +1,13 @@
 import React from 'react';
-import { Button } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import CONSTANTS from './../constants';
+import { SwitchThemeButton } from './../components';
 import {
   SignInScreen,
   SignUpScreen,
 } from './../screens';
 import { ThemeContext } from './../util';
-
-const SwitchThemeButton = () => {
-  const { theme, switchTheme } = React.useContext(ThemeContext);
-
-  return (
-    <Button
-      title='Switch'
-      onPress={() => {
-        switchTheme();
-      }}
-      color={
-        theme == CONSTANTS.THEMES.LIGHT
-          ? CONSTANTS.COLORS.SKY_BLUE
-          : CONSTANTS.COLORS.LIGHT_ORANGE
-      }
-    />
-  );
-};
 
 const Stack = createStackNavigator();
 
