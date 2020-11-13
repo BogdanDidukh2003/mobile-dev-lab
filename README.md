@@ -64,6 +64,7 @@ Install following packages:
   - <code>navigation</code> - for navigation setup
   - <code>screens</code> - for screen user interface
   - <code>styles</code> - for reusable styles
+  - <code>util</code> - for main utilities
   - <code>App.js</code> - entry point
 
 ## Running the mobile application
