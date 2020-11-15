@@ -1,12 +1,12 @@
 import React, { createContext, useState } from 'react';
-import { StatusBar } from 'react-native';
+import { StatusBar, useColorScheme } from 'react-native';
 
 import CONSTANTS from './../constants';
 
 const ThemeContext = createContext();
 
 const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState(CONSTANTS.THEMES.LIGHT);
+  const [theme, setTheme] = useState(useColorScheme() || CONSTANTS.THEMES.LIGHT);
 
   const switchTheme = () => {
     if (theme == CONSTANTS.THEMES.LIGHT) {
