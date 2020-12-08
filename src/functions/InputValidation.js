@@ -1,7 +1,7 @@
 import CONSTANTS from './../constants';
 
-const emailCondition = new RegExp('^(.+)@(.+)(\\.).{2,}$');
-const phoneCondition = new RegExp('^(\\+)?([0-9]+)$');
+const emailCondition = new RegExp(CONSTANTS.VALIDATION.EMAIL_REGEX);
+const phoneCondition = new RegExp(CONSTANTS.VALIDATION.PHONE_REGEX);
 
 const validateEmailInput = (email, setEmail, setEmailError) => {
   setEmailError(CONSTANTS.MESSAGES.DEFAULT);
@@ -23,9 +23,8 @@ const validateNameInput = (name, setName, setNameError) => {
   }
 };
 
-const validatePhoneInput = (phone, setPhone, setPhoneError) => {
+const validatePhoneInput = (phone, setPhoneError) => {
   setPhoneError(CONSTANTS.MESSAGES.DEFAULT);
-  setPhone(phone.trim());
 
   if (!phone) {
     setPhoneError(CONSTANTS.MESSAGES.FIELD_IS_REQUIRED);

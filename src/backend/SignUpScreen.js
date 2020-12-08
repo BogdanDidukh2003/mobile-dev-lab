@@ -39,7 +39,7 @@ export const useSignUpScreenBackend = () => {
   const _validateSignUpInput = () => {
     validateEmailInput(email, setEmail, setEmailError);
     validateNameInput(name, setName, setNameError);
-    validatePhoneInput(phone, setPhone, setPhoneError);
+    validatePhoneInput(phone, setPhoneError);
     validatePasswordInputOnSignUp(
       password, repeatPassword, setPasswordError, setRepeatPasswordError,
       setForcedPasswordErrorHighlight);
@@ -75,10 +75,11 @@ export const useSignUpScreenBackend = () => {
     setName(name);
   };
 
-  const onChangePhone = (phone) => {
+  const onChangePhone = (formattedPhone, phone) => {
     if (phoneError) {
-      validatePhoneInput(phone, setPhone, setPhoneError);
+      validatePhoneInput(phone, setPhoneError);
     }
+
     setPhone(phone);
   };
 
@@ -105,7 +106,6 @@ export const useSignUpScreenBackend = () => {
   return {
     email,
     name,
-    phone,
     password,
     repeatPassword,
     emailError,
