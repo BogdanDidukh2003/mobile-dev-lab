@@ -6,6 +6,10 @@
 
 Build an application with [Firebase Authentication](https://firebase.google.com/)
 
+### Lab 2
+
+Change expo project into native and add component that requires native code
+
 ## First time?
 
 Before moving to the next section, make sure you have [Node.js](https://nodejs.org/en/download/) installed.
