@@ -1,10 +1,12 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
+import CONSTANTS from '../constants';
 import Styles from './../styles';
 import {
   Button,
   InputField,
+  InputFieldMasked,
 } from './../components';
 import { useSignUpScreenBackend } from './../backend';
 import { ThemeContext } from '../util';
@@ -13,7 +15,6 @@ const SignUpScreen = () => {
   const {
     email,
     name,
-    phone,
     password,
     repeatPassword,
     emailError,
@@ -55,10 +56,10 @@ const SignUpScreen = () => {
       </View>
 
       <View style={Styles[theme].elementContainer}>
-        <InputField
+        <InputFieldMasked
+          textMask={CONSTANTS.VALIDATION.PHONE_MASK}
           placeholder='Phone'
           onChangeText={onChangePhone}
-          value={phone}
           errorMessage={phoneError}
         />
       </View>

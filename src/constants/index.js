@@ -49,6 +49,12 @@ const CONSTANTS = {
     LIGHT: 'light',
   },
 
+  VALIDATION: {
+    EMAIL_REGEX: '^(.+)@(.+)(\\.).{2,}$',
+    PHONE_MASK: '+38 ([000]) [000] [00] [00]',
+    PHONE_REGEX: '^[0-9]{10}$',
+  },
+
 };
 
 export default CONSTANTS;
