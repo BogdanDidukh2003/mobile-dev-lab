@@ -46,6 +46,39 @@ Styles[CONSTANTS.THEMES.LIGHT] = StyleSheet.create({
     textDecorationLine: 'underline',
   },
 
+  itemDescription: {
+    paddingLeft: 16,
+  },
+
+  listContainer: {
+    flex: 1,
+    backgroundColor: CONSTANTS.COLORS.MAIN_BACKGROUND,
+  },
+
+  listItem: {
+    alignSelf: 'stretch',
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+    paddingHorizontal: 24,
+    paddingVertical: 8,
+  },
+
+  listItemSeparator: {
+    height: 1,
+    width: '80%',
+    backgroundColor: CONSTANTS.COLORS.SILVER,
+    marginHorizontal: '10%',
+  },
+
+  loadingIndicator: {
+    paddingTop: 12,
+  },
+
+  mainMenuContainer: {
+    backgroundColor: CONSTANTS.COLORS.MAIN_BACKGROUND,
+    justifyContent: 'center',
+  },
+
   switchThemeButton: {
     fontSize: 40,
     color: CONSTANTS.COLORS.SKY_BLUE,
@@ -69,6 +102,27 @@ Styles[CONSTANTS.THEMES.LIGHT] = StyleSheet.create({
 
   textStyle: {
     color: CONSTANTS.COLORS.BLACK_TEXT,
+  },
+
+  title: {
+    fontWeight: 'bold',
+    marginBottom: 4,
+  },
+
+  wideButtonContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: CONSTANTS.COLORS.SKY_BLUE_TENDER,
+    borderRadius: 16,
+    padding: 8,
+    margin: 8,
+    marginTop: 0,
+  },
+
+  wideButtonText: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: CONSTANTS.COLORS.WHITE_TEXT,
   },
 
 });
@@ -115,6 +169,39 @@ Styles[CONSTANTS.THEMES.DARK] = StyleSheet.create({
     textDecorationLine: 'underline',
   },
 
+  itemDescription: {
+    paddingLeft: 16,
+  },
+
+  listContainer: {
+    flex: 1,
+    backgroundColor: CONSTANTS.COLORS.DARK_BACKGROUND,
+  },
+
+  listItem: {
+    alignSelf: 'stretch',
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+    paddingHorizontal: 24,
+    paddingVertical: 8,
+  },
+
+  listItemSeparator: {
+    height: 1,
+    width: '80%',
+    backgroundColor: CONSTANTS.COLORS.SILVER,
+    marginHorizontal: '10%',
+  },
+
+  loadingIndicator: {
+    paddingTop: 12,
+  },
+
+  mainMenuContainer: {
+    backgroundColor: CONSTANTS.COLORS.DARK_BACKGROUND,
+    justifyContent: 'center',
+  },
+
   switchThemeButton: {
     fontSize: 40,
     color: CONSTANTS.COLORS.LIGHT_ORANGE,
@@ -137,6 +224,27 @@ Styles[CONSTANTS.THEMES.DARK] = StyleSheet.create({
   },
 
   textStyle: {
+    color: CONSTANTS.COLORS.WHITE_TEXT,
+  },
+
+  title: {
+    fontWeight: 'bold',
+    marginBottom: 4,
+  },
+
+  wideButtonContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: CONSTANTS.COLORS.LIGHT_ORANGE_TENDER,
+    borderRadius: 16,
+    padding: 8,
+    margin: 8,
+    marginTop: 0,
+  },
+
+  wideButtonText: {
+    fontSize: 24,
+    fontWeight: 'bold',
     color: CONSTANTS.COLORS.WHITE_TEXT,
   },
 

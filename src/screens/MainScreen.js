@@ -1,32 +1,63 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View, FlatList, RefreshControl } from 'react-native';
 
 import Styles from './../styles';
-import { Button } from './../components';
+import { ListItem, LoadingIndicator, WideButton } from './../components';
 import { useMainScreenBackend } from './../backend';
 import { ThemeContext } from './../util';
 
+const renderItem = ({ item }) => {
+  return (
+    <ListItem
+      item={item}
+    />
+  );
+};
+
 const MainScreen = () => {
-  const { name, onPressSignOut } = useMainScreenBackend();
+  const { data, loading, onPressSignOut } = useMainScreenBackend();
   const { theme } = React.useContext(ThemeContext);
 
+  if (loading) {
+    return (
+      <View style={Styles[theme].listContainer}>
+        <LoadingIndicator />
+      </View>
+    );
+  }
   return (
-    <View style={Styles[theme].container}>
+    <>
+    <View style={Styles[theme].listContainer}>
 
-      <View style={Styles[theme].elementContainer}>
-        <Text
-          style={Styles[theme].textStyle}
-        >Welcome, {name}</Text>
-      </View>
-
-      <View style={Styles[theme].elementContainer}>
-        <Button
-          title='SIGN OUT'
-          onPress={onPressSignOut}
-        />
-      </View>
+      <FlatList
+        data={data}
+        renderItem={renderItem}
+        keyExtractor={item => item.name}
+        refreshControl={
+          <RefreshControl
+            refreshing={loading}
+            onRefresh={() => { }}
+            colors={['skyblue']}
+          />
+        }
+      />
 
     </View>
+
+    <View style={Styles[theme].mainMenuContainer} >
+
+      <WideButton
+        title='Add Station'
+        onPress={() => {}}
+      />
+
+      <WideButton
+        title='Sign Out'
+        onPress={onPressSignOut}
+      />
+
+    </View>
+    </>
   );
 }
 
