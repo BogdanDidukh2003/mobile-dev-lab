@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+
 import { apiConfig } from './../config';
 import { firebase } from './../functions';
 
@@ -18,18 +19,31 @@ const onPressSignOut = () => {
 export const useMainScreenBackend = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
 
   useEffect(() => {
+    pullData();
+  }, []);
+
+  const onRefresh = () => {
+    setRefreshing(true);
+    pullData();
+  };
+
+  const pullData = () => {
     getAllStations((res) => {
       res.sort((a, b) => a.name.localeCompare(b.name));
       setData(res);
       setLoading(false);
+      setRefreshing(false);
     });
-  }, [])
+  };
 
   return {
     data,
     loading,
+    refreshing,
     onPressSignOut,
+    onRefresh,
   };
 };

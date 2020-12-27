@@ -79,6 +79,11 @@ Styles[CONSTANTS.THEMES.LIGHT] = StyleSheet.create({
     justifyContent: 'center',
   },
 
+  refreshingIndicator: {
+    backgroundColor: CONSTANTS.COLORS.MAIN_BACKGROUND,
+    color: CONSTANTS.COLORS.SKY_BLUE,
+  },
+
   switchThemeButton: {
     fontSize: 40,
     color: CONSTANTS.COLORS.SKY_BLUE,
@@ -200,6 +205,11 @@ Styles[CONSTANTS.THEMES.DARK] = StyleSheet.create({
   mainMenuContainer: {
     backgroundColor: CONSTANTS.COLORS.DARK_BACKGROUND,
     justifyContent: 'center',
+  },
+
+  refreshingIndicator: {
+    backgroundColor: CONSTANTS.COLORS.ADDITIONAL_BACKGROUND,
+    color: CONSTANTS.COLORS.LIGHT_ORANGE,
   },
 
   switchThemeButton: {

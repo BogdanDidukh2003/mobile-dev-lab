@@ -15,7 +15,9 @@ const renderItem = ({ item }) => {
 };
 
 const MainScreen = () => {
-  const { data, loading, onPressSignOut } = useMainScreenBackend();
+  const {
+    data, loading, refreshing, onPressSignOut, onRefresh
+  } = useMainScreenBackend();
   const { theme } = React.useContext(ThemeContext);
 
   if (loading) {
@@ -35,9 +37,14 @@ const MainScreen = () => {
         keyExtractor={item => item.name}
         refreshControl={
           <RefreshControl
-            refreshing={loading}
-            onRefresh={() => { }}
-            colors={['skyblue']}
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+            progressBackgroundColor={
+              Styles[theme].refreshingIndicator.backgroundColor
+            }
+            colors={[
+              Styles[theme].refreshingIndicator.color,
+            ]}
           />
         }
       />
