@@ -9,9 +9,13 @@ export const Routes = () => {
   const [userIsSignedIn, setUserIsSignedIn] = useState(false);
 
   useEffect(() => {
-    firebase.auth.onAuthStateChanged((user) => {
+    const unsubscribe = firebase.auth.onAuthStateChanged((user) => {
       setUserIsSignedIn(user ? true : false);
     });
+    
+    return () => {
+      unsubscribe();
+    };
   }, []);
 
   return (
