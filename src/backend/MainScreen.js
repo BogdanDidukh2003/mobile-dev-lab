@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Alert } from 'react-native';
 
 import { apiConfig } from './../config';
 import { firebase } from './../functions';
@@ -13,7 +14,18 @@ const getAllStations = (callback) => {
 };
 
 const onPressSignOut = () => {
-  firebase.signOut();
+  Alert.alert('Sign Out', 'Are you sure?', [
+    {
+      text: 'Cancel',
+      onPress: () => { },
+      style: 'cancel',
+    },
+    {
+      text: 'OK',
+      onPress: () => firebase.signOut(),
+    },
+  ],
+    { cancelable: false });
 };
 
 export const useMainScreenBackend = () => {
