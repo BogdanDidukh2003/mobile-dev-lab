@@ -1,6 +1,7 @@
 import CONSTANTS from './../constants';
 
 const emailCondition = new RegExp(CONSTANTS.VALIDATION.EMAIL_REGEX);
+const floatNumberCondition = new RegExp(CONSTANTS.VALIDATION.FLOAT_NUMBER_REGEX);
 const phoneCondition = new RegExp(CONSTANTS.VALIDATION.PHONE_REGEX);
 
 const validateEmailInput = (email, setEmail, setEmailError) => {
@@ -11,6 +12,17 @@ const validateEmailInput = (email, setEmail, setEmailError) => {
     setEmailError(CONSTANTS.MESSAGES.FIELD_IS_REQUIRED);
   } else if (!emailCondition.test(email)) {
     setEmailError(CONSTANTS.MESSAGES.INVALID_VALUE);
+  }
+};
+
+const validateFloatNumberInput = (number, setNumber, setNumberError) => {
+  setNumberError(CONSTANTS.MESSAGES.DEFAULT);
+  setNumber(number.trim());
+
+  if (!number) {
+    setNumberError(CONSTANTS.MESSAGES.FIELD_IS_REQUIRED);
+  } else if (!floatNumberCondition.test(number)) {
+    setNumberError(CONSTANTS.MESSAGES.INVALID_VALUE);
   }
 };
 
@@ -64,6 +76,7 @@ const validatePasswordInputOnSignUp = (
 
 export {
   validateEmailInput,
+  validateFloatNumberInput,
   validateNameInput,
   validatePhoneInput,
   validatePasswordInput,

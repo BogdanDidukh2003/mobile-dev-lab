@@ -2,10 +2,12 @@ import { useState, useEffect } from 'react';
 import CONSTANTS from '../constants';
 
 import {
+  dataApi,
+  validateFloatNumberInput,
   validateNameInput,
 } from './../functions';
 
-export const useAddStationScreenBackend = () => {
+export const useAddStationScreenBackend = (navigation) => {
   const [name, setName] = useState('');
   const [latitude, setLatitude] = useState('');
   const [longitude, setLongitude] = useState('');
@@ -25,12 +27,21 @@ export const useAddStationScreenBackend = () => {
   }, [requestAddStation, nameError, latitudeError, longitudeError]);
 
   const handleAddStation = () => {
+    dataApi.addStation(name, parseFloat(latitude), parseFloat(longitude), (res) => {
+      if (res.code >= 400000) {
+        setGeneralError(res.message);
+      } else {
+        navigation.goBack();
+      }
+    }).catch((error) => {
+      setGeneralError(error);
+    });
   };
 
   const _validateAllInputs = () => {
     validateNameInput(name, setName, setNameError);
-    validateNameInput(latitude, setLatitude, setLatitudeError);
-    validateNameInput(longitude, setLongitude, setLongitudeError);
+    validateFloatNumberInput(latitude, setLatitude, setLatitudeError);
+    validateFloatNumberInput(longitude, setLongitude, setLongitudeError);
   };
 
   const onPressAddStation = () => {
@@ -49,7 +60,7 @@ export const useAddStationScreenBackend = () => {
 
   const onChangeLatitude = (latitude) => {
     if (latitudeError) {
-      validateNameInput(latitude, setLatitude, setLatitudeError);
+      validateFloatNumberInput(latitude, setLatitude, setLatitudeError);
     }
 
     setLatitude(latitude);
@@ -57,7 +68,7 @@ export const useAddStationScreenBackend = () => {
 
   const onChangeLongitude = (longitude) => {
     if (longitudeError) {
-      validateNameInput(longitude, setLongitude, setLongitudeError);
+      validateFloatNumberInput(longitude, setLongitude, setLongitudeError);
     }
 
     setLongitude(longitude);

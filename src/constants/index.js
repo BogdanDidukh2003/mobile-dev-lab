@@ -56,6 +56,7 @@ const CONSTANTS = {
 
   VALIDATION: {
     EMAIL_REGEX: '^(.+)@(.+)(\\.).{2,}$',
+    FLOAT_NUMBER_REGEX: '^[\+\-]?[0-9]+(\.[0-9]+)?$',
     PHONE_MASK: '+38 ([000]) [000] [00] [00]',
     PHONE_REGEX: '^[0-9]{10}$',
   },

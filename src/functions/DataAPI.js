@@ -5,8 +5,7 @@ class DataAPI {
     this.config = config;
   }
 
-  async addStation(name, latitude, longitude) {
-    //external_id: name,
+  async addStation(name, latitude, longitude, callback) {
     return fetch(this.config.POST_STATION_URL, {
       method: 'POST',
       headers: {
@@ -14,12 +13,14 @@ class DataAPI {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
+        external_id: name,
         name: name,
         latitude: latitude,
         longitude: longitude,
       })
     })
-      .then((response) => response.json());
+      .then((response) => response.json())
+      .then(callback);
   }
 
   async deleteStation() { }

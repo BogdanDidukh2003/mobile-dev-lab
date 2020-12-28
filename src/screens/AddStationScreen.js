@@ -9,7 +9,7 @@ import {
 import { useAddStationScreenBackend } from './../backend';
 import { ThemeContext } from '../util';
 
-const AddStationScreen = () => {
+const AddStationScreen = ({ navigation }) => {
   const {
     name,
     latitude,
@@ -22,7 +22,7 @@ const AddStationScreen = () => {
     onChangeLatitude,
     onChangeLongitude,
     onPressAddStation,
-  } = useAddStationScreenBackend();
+  } = useAddStationScreenBackend(navigation);
 
   const { theme } = React.useContext(ThemeContext);
 
@@ -31,7 +31,7 @@ const AddStationScreen = () => {
 
       <View style={Styles[theme].elementContainer}>
         <InputField
-          placeholder='Name'
+          placeholder='Name (ID)'
           onChangeText={onChangeName}
           value={name}
           errorMessage={nameError}
