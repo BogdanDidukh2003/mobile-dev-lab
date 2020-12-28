@@ -14,10 +14,16 @@ const renderItem = ({ item }) => {
   );
 };
 
-const MainScreen = () => {
+const MainScreen = ({ navigation }) => {
   const {
-    data, loading, refreshing, onPressSignOut, onRefresh
-  } = useMainScreenBackend();
+    data,
+    loading,
+    refreshing,
+    onPressAddStation,
+    onPressSignOut,
+    onRefresh,
+  } = useMainScreenBackend(navigation);
+
   const { theme } = React.useContext(ThemeContext);
 
   if (loading) {
@@ -29,41 +35,41 @@ const MainScreen = () => {
   }
   return (
     <>
-    <View style={Styles[theme].listContainer}>
+      <View style={Styles[theme].listContainer}>
 
-      <FlatList
-        data={data}
-        renderItem={renderItem}
-        keyExtractor={item => item.name}
-        refreshControl={
-          <RefreshControl
-            refreshing={refreshing}
-            onRefresh={onRefresh}
-            progressBackgroundColor={
-              Styles[theme].refreshingIndicator.backgroundColor
-            }
-            colors={[
-              Styles[theme].refreshingIndicator.color,
-            ]}
-          />
-        }
-      />
+        <FlatList
+          data={data}
+          renderItem={renderItem}
+          keyExtractor={item => item.name}
+          refreshControl={
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={onRefresh}
+              progressBackgroundColor={
+                Styles[theme].refreshingIndicator.backgroundColor
+              }
+              colors={[
+                Styles[theme].refreshingIndicator.color,
+              ]}
+            />
+          }
+        />
 
-    </View>
+      </View>
 
-    <View style={Styles[theme].mainMenuContainer} >
+      <View style={Styles[theme].mainMenuContainer} >
 
-      <WideButton
-        title='Add Station'
-        onPress={() => {}}
-      />
+        <WideButton
+          title='Add Station'
+          onPress={onPressAddStation}
+        />
 
-      <WideButton
-        title='Sign Out'
-        onPress={onPressSignOut}
-      />
+        <WideButton
+          title='Sign Out'
+          onPress={onPressSignOut}
+        />
 
-    </View>
+      </View>
     </>
   );
 }

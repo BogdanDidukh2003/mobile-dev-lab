@@ -1,3 +1,4 @@
+import dataApi from './DataAPI';
 import firebase from './Firebase';
 import {
   validateEmailInput,
@@ -8,6 +9,7 @@ import {
 } from './InputValidation';
 
 export {
+  dataApi,
   firebase,
   validateEmailInput,
   validateNameInput,

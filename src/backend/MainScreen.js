@@ -1,17 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Alert } from 'react-native';
 
-import { apiConfig } from './../config';
-import { firebase } from './../functions';
-
-const getAllStations = (callback) => {
-  fetch(apiConfig.GET_STATIONS_URL)
-    .then((response) => response.json())
-    .then(callback)
-    .catch((error) => {
-      console.error(error);
-    });
-};
+import CONSTANTS from '../constants';
+import { dataApi, firebase } from './../functions';
 
 const onPressSignOut = () => {
   Alert.alert('Sign Out', 'Are you sure?', [
@@ -28,7 +19,7 @@ const onPressSignOut = () => {
     { cancelable: false });
 };
 
-export const useMainScreenBackend = () => {
+export const useMainScreenBackend = (navigation) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
@@ -37,17 +28,23 @@ export const useMainScreenBackend = () => {
     pullData();
   }, []);
 
+  const onPressAddStation = () => {
+    navigation.navigate(CONSTANTS.SCREENS.ADD_STATION);
+  };
+
   const onRefresh = () => {
     setRefreshing(true);
     pullData();
   };
 
   const pullData = () => {
-    getAllStations((res) => {
+    dataApi.getAllStations((res) => {
       res.sort((a, b) => a.name.localeCompare(b.name));
       setData(res);
       setLoading(false);
       setRefreshing(false);
+    }).catch((error) => {
+      console.error(error)
     });
   };
 
@@ -55,6 +52,7 @@ export const useMainScreenBackend = () => {
     data,
     loading,
     refreshing,
+    onPressAddStation,
     onPressSignOut,
     onRefresh,
   };
