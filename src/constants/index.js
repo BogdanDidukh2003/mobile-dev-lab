@@ -31,12 +31,14 @@ const CONSTANTS = {
   },
 
   SCREEN_TITLES: {
+    ADD_STATION: 'Add station',
     MAIN: 'Main',
     SIGN_IN: 'Sign In',
     SIGN_UP: 'Create account',
   },
 
   SCREENS: {
+    ADD_STATION: 'AddStation',
     MAIN: 'Main',
     SIGN_IN: 'SignIn',
     SIGN_UP: 'SignUp',

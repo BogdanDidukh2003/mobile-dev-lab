@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import CONSTANTS from './../constants';
 import {
+  AddStationScreen,
   MainScreen,
 } from './../screens';
 import { SwitchThemeButton } from '../components';
@@ -33,6 +34,13 @@ export const AppStack = () => {
         component={MainScreen}
         options={{
           title: CONSTANTS.SCREEN_TITLES.MAIN,
+        }}
+      />
+      <Stack.Screen
+        name={CONSTANTS.SCREENS.ADD_STATION}
+        component={AddStationScreen}
+        options={{
+          title: CONSTANTS.SCREEN_TITLES.ADD_STATION,
         }}
       />
     </Stack.Navigator>
