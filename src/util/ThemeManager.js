@@ -15,6 +15,11 @@ const ThemeProvider = ({ children }) => {
       (theme == CONSTANTS.THEMES.LIGHT
         ? 'dark' : 'light'
       ) + '-content');
+    StatusBar.setBackgroundColor(
+      theme == CONSTANTS.THEMES.LIGHT
+        ? CONSTANTS.COLORS.MAIN_BACKGROUND
+        : CONSTANTS.COLORS.DARK_BACKGROUND
+    );
   };
 
   const switchTheme = () => {
