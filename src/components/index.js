@@ -5,6 +5,7 @@ import InputFieldMasked from './InputFieldMasked';
 import ListItem from './ListItem';
 import LoadingIndicator from './LoadingIndicator';
 import SwitchThemeButton from './SwitchThemeButton';
+import Warning from './Warning';
 import WideButton from './WideButton';
 
 export {
@@ -15,5 +16,6 @@ export {
   ListItem,
   LoadingIndicator,
   SwitchThemeButton,
+  Warning,
   WideButton,
 };

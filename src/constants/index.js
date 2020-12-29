@@ -13,6 +13,7 @@ const CONSTANTS = {
     GREY_TEXT: '#808080',
     BLACK_TEXT: '#000000',
     SILVER: '#CED0CE',
+    WARNING: '#FCC201',
   },
 
   FIREBASE: {
@@ -26,6 +27,7 @@ const CONSTANTS = {
     FIELD_IS_EMPTY: 'field is empty',
     FIELD_IS_REQUIRED: 'field is required',
     INVALID_VALUE: 'value is invalid',
+    NO_INTERNET: 'No Internet connection!',
     PASSWORD_TOO_SHORT: 'password is too short, min 8 characters required',
     PASSWORDS_DO_NOT_MATCH: 'passwords do not match, try again',
   },

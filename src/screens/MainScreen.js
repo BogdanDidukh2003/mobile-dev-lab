@@ -1,14 +1,21 @@
 import React from 'react';
 import { View, FlatList, RefreshControl } from 'react-native';
 
+import CONSTANTS from '../constants';
 import Styles from './../styles';
-import { ListItem, LoadingIndicator, WideButton } from './../components';
+import {
+  ListItem,
+  LoadingIndicator,
+  Warning,
+  WideButton,
+} from './../components';
 import { useMainScreenBackend } from './../backend';
 import { ThemeContext } from './../util';
 
 const MainScreen = ({ navigation }) => {
   const {
     data,
+    isOnline,
     loading,
     refreshing,
     onLongPress,
@@ -28,6 +35,13 @@ const MainScreen = ({ navigation }) => {
     );
   };
 
+  if (!isOnline) {
+    return (
+      <Warning
+        text={CONSTANTS.MESSAGES.NO_INTERNET}
+      />
+    );
+  }
   if (loading) {
     return (
       <View style={Styles[theme].listContainer}>

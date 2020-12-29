@@ -114,6 +114,12 @@ Styles[CONSTANTS.THEMES.LIGHT] = StyleSheet.create({
     marginBottom: 4,
   },
 
+  warningText: {
+    color: CONSTANTS.COLORS.WARNING,
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+
   wideButtonContainer: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -240,6 +246,12 @@ Styles[CONSTANTS.THEMES.DARK] = StyleSheet.create({
   title: {
     fontWeight: 'bold',
     marginBottom: 4,
+  },
+
+  warningText: {
+    color: CONSTANTS.COLORS.WARNING,
+    fontSize: 20,
+    fontWeight: 'bold',
   },
 
   wideButtonContainer: {

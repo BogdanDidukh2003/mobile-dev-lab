@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Alert } from 'react-native';
+import NetInfo from "@react-native-community/netinfo";
 
 import CONSTANTS from '../constants';
 import { dataApi, firebase } from './../functions';
@@ -21,16 +22,31 @@ const onPressSignOut = () => {
 
 export const useMainScreenBackend = (navigation) => {
   const [data, setData] = useState([]);
+  const [isOnline, setIsOnline] = useState(false);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
 
   useEffect(() => {
-    pullData();
+    const unsubscribe = NetInfo.addEventListener(state => {
+      setIsOnline(state.isConnected);
+    });
+
+    return () => {
+      unsubscribe();
+    };
   }, []);
 
   useEffect(() => {
+    if (isOnline) {
+      pullData();
+    }
+  }, [isOnline]);
+
+  useEffect(() => {
     return navigation.addListener('focus', () => {
-      onRefresh();
+      if (isOnline) {
+        onRefresh();
+      }
     });
   }, [navigation]);
 
@@ -83,6 +99,7 @@ export const useMainScreenBackend = (navigation) => {
 
   return {
     data,
+    isOnline,
     loading,
     refreshing,
     onLongPress,
