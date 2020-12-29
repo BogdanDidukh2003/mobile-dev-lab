@@ -48,7 +48,7 @@ export const useMainScreenBackend = (navigation) => {
         onRefresh();
       }
     });
-  }, [navigation]);
+  }, [navigation, isOnline]);
 
   const handleDeleteStation = (station) => {
     const callback = (...args) => {
