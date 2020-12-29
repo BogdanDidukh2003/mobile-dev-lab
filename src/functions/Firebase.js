@@ -38,6 +38,12 @@ class Firebase {
       .doc(this.auth.currentUser.uid).get()
       .then(onSuccessFunction);
   }
+
+  async updateUserData(data) {
+    return await this.collectionReference
+      .doc(this.auth.currentUser.uid)
+      .update(data);
+  }
 }
 
 export default new Firebase();
