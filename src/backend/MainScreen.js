@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { Alert } from 'react-native';
-import { call } from 'react-native-reanimated';
 
 import CONSTANTS from '../constants';
 import { dataApi, firebase } from './../functions';
@@ -28,6 +27,12 @@ export const useMainScreenBackend = (navigation) => {
   useEffect(() => {
     pullData();
   }, []);
+
+  useEffect(() => {
+    return navigation.addListener('focus', () => {
+      onRefresh();
+    });
+  }, [navigation]);
 
   const handleDeleteStation = (station) => {
     const callback = (...args) => {
