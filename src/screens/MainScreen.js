@@ -6,25 +6,27 @@ import { ListItem, LoadingIndicator, WideButton } from './../components';
 import { useMainScreenBackend } from './../backend';
 import { ThemeContext } from './../util';
 
-const renderItem = ({ item }) => {
-  return (
-    <ListItem
-      item={item}
-    />
-  );
-};
-
 const MainScreen = ({ navigation }) => {
   const {
     data,
     loading,
     refreshing,
+    onLongPress,
     onPressAddStation,
     onPressSignOut,
     onRefresh,
   } = useMainScreenBackend(navigation);
 
   const { theme } = React.useContext(ThemeContext);
+
+  const renderItem = ({ item }) => {
+    return (
+      <ListItem
+        item={item}
+        onLongPress={onLongPress(item)}
+      />
+    );
+  };
 
   if (loading) {
     return (

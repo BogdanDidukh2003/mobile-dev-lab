@@ -23,15 +23,20 @@ class DataAPI {
       .then(callback);
   }
 
-  async deleteStation() { }
+  async deleteStation(id, callback) {
+    const url = this.config.DELETE_STATION_URL_BASE + id + this.config.DELETE_STATION_URL_END
+    return fetch(url, {
+      method: 'DELETE',
+    })
+      .then((response) => response.json())
+      .then(callback);
+  }
 
   async getAllStations(callback) {
     return fetch(this.config.GET_STATIONS_URL)
       .then((response) => response.json())
       .then(callback);
   };
-
-  async updateStation() { }
 }
 
 export default new DataAPI(apiConfig);

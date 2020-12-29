@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 
 import Styles from './../styles';
 import { ThemeContext } from './../util';
@@ -8,7 +8,9 @@ const ListItem = (props) => {
   const { theme } = React.useContext(ThemeContext);
 
   return (
-    <>
+    <TouchableOpacity
+      onLongPress={props.onLongPress}
+    >
       <View style={Styles[theme].listItem}>
 
         <Text
@@ -28,7 +30,7 @@ const ListItem = (props) => {
       <View
         style={Styles[theme].listItemSeparator}
       />
-    </>
+    </TouchableOpacity>
   );
 }
 
