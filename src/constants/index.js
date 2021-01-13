@@ -32,6 +32,12 @@ const CONSTANTS = {
     PASSWORDS_DO_NOT_MATCH: 'passwords do not match, try again',
   },
 
+  NOTIFICATION: {
+    CHANNEL_ID: '82648cc8-7891-45e8-ac65-216f',
+    CHANNEL_NAME: 'Mobile Dev Lab Channel',
+    DAY_TIME_INTERVAL: 24 * 60 * 60 * 1000,
+  },
+
   SCREEN_TITLES: {
     ADD_STATION: 'Add station',
     MAIN: 'Main',

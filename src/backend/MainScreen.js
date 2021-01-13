@@ -3,7 +3,11 @@ import { Alert } from 'react-native';
 import NetInfo from "@react-native-community/netinfo";
 
 import CONSTANTS from '../constants';
-import { dataApi, firebase } from './../functions';
+import {
+  dataApi,
+  firebase,
+  notificationService,
+} from './../functions';
 
 const onPressSignOut = () => {
   Alert.alert('Sign Out', 'Are you sure?', [
@@ -92,6 +96,12 @@ export const useMainScreenBackend = (navigation) => {
       setData(res);
       setLoading(false);
       setRefreshing(false);
+
+      notificationService.cancelAll();
+      notificationService.scheduleLocalNotification(
+        new Date(Date.now() + CONSTANTS.NOTIFICATION.DAY_TIME_INTERVAL),
+        'You did not check your stations for 24 hours!\nCheck now',
+        'Reminder');
     }).catch((error) => {
       console.error(error)
     });

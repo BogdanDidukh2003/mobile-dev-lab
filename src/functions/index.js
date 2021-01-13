@@ -8,10 +8,12 @@ import {
   validatePasswordInput,
   validatePasswordInputOnSignUp,
 } from './InputValidation';
+import notificationService from './NotificationService';
 
 export {
   dataApi,
   firebase,
+  notificationService,
   validateEmailInput,
   validateFloatNumberInput,
   validateNameInput,
